@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="#form-link" id="form-link">Form</a>
+        <a href="#history-link" id="history-link">History</a>
+    </nav>
+</header>
+<main>
+    <form id="f">
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text" name="first-name" oninput="store()">
+
+        <label for="last-name">Last Name</label>
+        <input id="last-name" type="text" name="last-name" oninput="store()">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" oninput="store()">
+
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" name="phone" oninput="store()">
+
+        <label for="company">Company</label>
+        <input id="company" type="text" name="company" oninput="store()">
+
+        <label for="address">Address</label>
+        <input id="address" type="text" name="address" oninput="store()">
+
+        <!--<div>
+            <button type="submit" id="submit-button" onclick="store(events)" >Submit Form</button>
+        </div>-->
+    </form>
+    <div>
+        <button id="submit-button">Submit Form</button>
+    </div>
+</main>
+<!--<script src="script.js"></script>-->
+<script>
+    display();
+
+    function store() {
+
+        let inputFname= document.getElementById("first-name");
+        localStorage.setItem("first-name", inputFname.value);
+
+        let inputLname= document.getElementById("last-name");
+        localStorage.setItem("last-name", inputLname.value);
+
+        let inputEmail= document.getElementById("email");
+        localStorage.setItem("email", inputEmail.value);
+
+        let inputPhone= document.getElementById("phone");
+        localStorage.setItem("phone", inputPhone.value);
+
+        let inputCompany= document.getElementById("company");
+        localStorage.setItem("company", inputCompany.value);
+
+        let inputAddress= document.getElementById("address");
+        localStorage.setItem("address", inputAddress.value);
+
+        // localStorage.setItem("formData", JSON.stringify(fData));
+        //display();
+        //e.preventDefault();
+
+        /*const form = document.querySelector('form');
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        for (const dataKey in data) {
+            let key = dataKey;
+            let value = data[dataKey];
+            localStorage.setItem(key,value);
+        }*/
+        display();
+    }
+
+    function display() {
+        if (localStorage.hasOwnProperty("first-name")) {
+            // let {inputFname, inputLname, inputEmail, inputPhone, inputCompany, inputAddress} = JSON.parse(localStorage.getItem('formData'));
+            // console.log(localStorage.getItem('formData'));
+            console.log(localStorage.length);
+            document.getElementById("first-name").value = localStorage.getItem('first-name')
+            document.getElementById("last-name").value = localStorage.getItem('last-name')
+            document.getElementById("email").value = localStorage.getItem('email')
+            document.getElementById("phone").value = localStorage.getItem('phone')
+            document.getElementById("company").value = localStorage.getItem('company')
+            document.getElementById("address").value = localStorage.getItem('address')
+            // console.log(document.getElementById("first-name").value);
+        }
+    }
+
+</script>
+</body>
+</html>
